@@ -18,7 +18,7 @@
       @on-change="onPickerChange"
       :columns="columns"
       :fixed-columns="fixedColumns"
-      :container="'#vux-popup-picker-'+uuid"></picker>
+      :container="'#vux-popup-picker-'+uuid" :params="params"></picker>
     </div>
   </popup>
 </template>
@@ -78,7 +78,8 @@ export default {
       type: Boolean,
       default: true
     },
-    show: Boolean
+    show: Boolean,
+    params: Array
   },
   methods: {
     getNameValues () {

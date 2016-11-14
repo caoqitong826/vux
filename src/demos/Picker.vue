@@ -1,7 +1,7 @@
 <template>
   <div>
     <group-title>默认，不设置默认值时选中第一个</group-title>
-    <picker :data='years' :value.sync='year1' @on-change='change'></picker>
+    <picker :data='years' :value.sync='year1' @on-change='change' :params='params'></picker>
     <br>
     <group-title>异步加载及动态改变数据</group-title>
     <picker :data='years001' :value.sync='year001' @on-change='change'></picker>
@@ -14,22 +14,22 @@
     <x-button type="primary" @click="changeValue([['2','4','6','8','10','11']])">Set Data2</x-button>
     <br>
     <group-title>设置默认值时</group-title>
-    <picker :data='years' :value.sync='year2' @on-change='change'></picker>
+    <picker :data='years' :value.sync='year2' @on-change='change' :params='params'></picker>
     <br>
     <group-title>双向绑定</group-title>
-    <picker :data='years' :value.sync='year3' @on-change='change3'></picker>
+    <picker :data='years' :value.sync='year3' @on-change='change3' :params='params'></picker>
     <select v-model='year5'>
-      <option v-for='one in years[0]' value='{{one.value}}'>{{one.name}}</option>
+      <option v-for='one in years[0]' value='{{one.value}}'>{{one.nam}}</option>
     </select>
     <br>
     <group-title>非联动多列</group-title>
-    <picker :data='years1' :value.sync='year4' @on-change='change'></picker>
+    <picker :data='years1' :value.sync='year4' @on-change='change' :params='params'></picker>
     <br>
     <group-title>五列</group-title>
     <picker :data='year6' :value.sync='year6Value' @on-change='change'></picker>
     <br>
     <group-title>地区联动: 当前值{{year7Value}}</group-title>
-    <picker :data='year7' :columns=3 :value.sync='year7Value' @on-change='change'></picker>
+    <picker :data='year7' :columns=3 :value.sync='year7Value' @on-change='change' :params='params1'></picker>
     <x-button @click="setData1" type="primary">set Value to ["USA", "usa002", "0005"]</x-button>
     <x-button @click="setData2" type="primary">set Value to ["china", "china002", "gz"]</x-button>
     <x-button @click="setList" type="primary">set List</x-button>
@@ -45,7 +45,7 @@ import { Cell, Group, Picker, GroupTitle, XButton } from '../components'
 let years = []
 for (var i = 2000; i <= 2030; i++) {
   years.push({
-    name: i + '年',
+    nam: i + '年',
     value: i + ''
   })
 }
@@ -97,6 +97,8 @@ export default {
   },
   data () {
     return {
+      params: ['value', 'nam'],
+      params1: ['value', 'name'],
       years: [years],
       years001: [],
       year001: [''],

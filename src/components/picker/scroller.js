@@ -16,7 +16,7 @@ const TEMPLATE = `
 import Animate from './animate'
 import { getElement, getComputedStyle, easeOutCubic, easeInOutCubic } from './util'
 
-var Scroller = function (container, options) {
+var Scroller = function (container, options, params) {
   var self = this
 
   options = options || {}
@@ -47,7 +47,11 @@ var Scroller = function (container, options) {
   var html = ''
   if (data.length && data[0].constructor === Object) {
     data.forEach(function (row) {
-      html += '<div class="' + self.options.itemClass + '" data-value="' + row.value + '">' + row.name + '</div>'
+      if (params && params.length === 2) {
+        html += '<div class="' + self.options.itemClass + '" data-value="' + row[params[0]] + '">' + row[params[1]] + '</div>'
+      } else {
+        html += '<div class="' + self.options.itemClass + '" data-value="' + row.value + '">' + row.name + '</div>'
+      }
     })
   } else {
     data.forEach(function (val) {

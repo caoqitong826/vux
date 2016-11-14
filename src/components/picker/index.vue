@@ -46,7 +46,8 @@ export default {
     itemClass: {
       type: String,
       default: 'scroller-item'
-    }
+    },
+    params: Array
   },
   methods: {
     getId (i) {
@@ -88,7 +89,7 @@ export default {
               _this.renderChain(i + 1)
             }
           }
-        })
+        }, _this.params)
         if (_this.value) {
           _this.scroller[i].select(value[i])
         }
@@ -117,7 +118,7 @@ export default {
           _this.$emit('on-change', _this.getValue())
           _this.renderChain(i + 1)
         }
-      })
+      }, _this.params)
       this.value.$set(i, list[0].value)
       this.renderChain(i + 1)
     },

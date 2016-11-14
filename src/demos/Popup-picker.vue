@@ -84,6 +84,7 @@ export default {
   },
   data () {
     return {
+      params: ['name', 'value'],
       title1: '手机机型',
       title2: '详细机型',
       title3: '联动显示值',
